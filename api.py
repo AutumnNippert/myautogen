@@ -12,8 +12,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 class System:
     def run_command(string):
         import subprocess
-        import os
-        print("$ " + string)
+
+        # print("$ " + string)
         cmd = subprocess.Popen(string, shell=True, stdout=subprocess.PIPE)
         output = cmd.stdout.read()
         return output.decode('utf-8')
@@ -41,7 +41,7 @@ class OpenAI:
             return str(e)
 
     def run_command(string):
-        command = OpenAI.query(prompt=string, personality='You are a system with the goal of running commands. All you do is respond with the command that you are described to run. This must work for the current system.') # If you are unaware of the environment, discover it.')
+        command = OpenAI.query(prompt=string, personality='You are a system with the goal of running commands. All you do is respond with the command that you are described to run. The running will be done for you.') # If you are unaware of the environment, discover it.')
         return System.run_command(command)
 
     # Define function to run the chatbot
