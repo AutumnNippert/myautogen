@@ -16,7 +16,7 @@ class System:
         # print("$ " + string)
         cmd = subprocess.Popen(string, shell=True, stdout=subprocess.PIPE)
         output = cmd.stdout.read()
-        return output.decode('utf-8')
+        return "Successfully run command\n" + output.decode('utf-8')
 
 class OpenAI:
     # Define function to generate response
